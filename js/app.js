@@ -176,6 +176,8 @@ function setupHterm() {
     term.onTerminalReady = function() {
         const io = this.io.push();
         io.onVTKeystroke = (string) => {
+			window.term_.io.print(string); //Toni
+			if (string == '\r') window.term_.io.print('\n'); //Toni
             nusSendString(string);
         };
         io.sendString = nusSendString;
